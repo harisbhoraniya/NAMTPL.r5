@@ -1,18 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { RiArrowRightLine } from "react-icons/ri";
+import { RiArrowRightLine, RiArrowDownSLine } from "react-icons/ri";
+import ImageSlider from "@/components/ImageSlider";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const grindingMedia = [
   {
     id: "01",
+    slug: "zirconia-beads",
     name: "Zirconia Beads",
     subtitle: "ZR95 Series",
     description:
-      "Ultra-fine crystallite structure, high density, uniform particle size and smooth surface. Non-standard grinding media can be customised according to customer requirements with good wear resistance and high strength, effectively reducing grinding process cost.",
+      "Ultra-fine crystallite structure, high density, uniform particle size and smooth surface, with good wear resistance and high strength.",
     particleSizes: [
-      { label: "ZR95 Nano Zirconia Beads", range: "Φ0.05 – Φ2.0 mm" },
-      { label: "ZR95 High-purity Zirconia Beads", range: "Φ0.3 – Φ5.0 mm" },
+      { label: "ZR95 Nano Zirconia Beads", range: "0.05mm- 2.00mm" },
+      { label: "ZR95 High-purity Zirconia Beads", range: "0.30mm- 5.00mm" },
     ],
     apps: [
       "Lithium iron phosphate battery materials",
@@ -27,12 +32,13 @@ const grindingMedia = [
   },
   {
     id: "02",
+    slug: "silicon-nitride-beads",
     name: "Silicon Nitride Beads",
     subtitle: "Ultra-Wear-Resistant Series",
     description:
-      "High-end grinding media with low density, low wear and high efficiency. Applicable across a wider range of grinding conditions with excellent cost performance — a premium alternative to zirconia beads.",
+      "High-end grinding media with low density, low wear and high efficiency — a premium, cost-effective alternative to zirconia beads.",
     particleSizes: [
-      { label: "Ultra-wear-resistant Silicon Nitride Beads", range: "Φ0.1 – Φ3.0 mm" },
+      { label: "Ultra-wear-resistant Silicon Nitride Beads", range: "0.10mm- 3.00mm" },
     ],
     apps: [
       "Silicon nitride powder & raw materials",
@@ -44,37 +50,117 @@ const grindingMedia = [
     img: "/images/silicon_nitride.png",
     accent: "#6e8fa8",
   },
+  {
+    id: "03",
+    slug: "alumina-ceramic-beads",
+    name: "Alumina Ceramic Beads",
+    subtitle: "92% Alumina Series",
+    description:
+      "Manufactured from premium 92% alumina raw materials with high hardness, excellent wear resistance and a low breakage rate.",
+    particleSizes: [
+      { label: "92% Alumina Ceramic Beads", range: "1.00mm- 100.00mm" },
+    ],
+    apps: [
+      "Ceramic & porcelain industries",
+      "Ball mills & attrition mills",
+      "Mining & mineral processing",
+      "Paints, inks & pigments",
+      "Cement & building materials",
+      "Chemical processing",
+    ],
+    img: "/images/alumina_ceramic_ball.jpg",
+    accent: "#d9d3c4",
+  },
 ];
 
 const ceramicParts = [
   {
     series: "A-ZR (Y8 Series)",
+    slug: "a-zr-y8-series",
     color: "#d4c49a",
+    img: "/images/ceramic-parts-a-zr-y8-series.jpg",
     description:
-      "A composite stabilised zirconia ceramic material independently developed by NAMTPL. With superior performance, it is more suitable for ceramic accessories used in dry grinding processes.",
-    products: ["Valve cores", "Plungers", "Classification wheels", "Agitation rods", "Wear liners"],
+      "The Y8 series is a composite stabilized zirconia ceramic material independently developed by us. ",
+    products: ["Valve cores", "Plungers", "Classification wheels", "Agitation rods", "etc."],
   },
   {
     series: "Y-ZR (3Y Series)",
+    slug: "y-zr-3y-series",
     color: "#ffffff",
+    img: "/images/ceramic-parts-y-zr-3y-series.jpg",
     description:
-      "Yttrium-stabilised zirconia parts offering outstanding toughness and dimensional accuracy for precision grinding and milling applications.",
-    products: ["Bead mill accessories", "Ball milling jars", "Turbines", "Nozzles", "Molds", "Cutting tools", "Shafts"],
+      "The 3Y series is yttrium stable zirconia part.",
+    products: ["Zirconia ceramic accessories for bead mills", "Ball milling jars", "Turbines", "Nozzles", "etc."],
   },
   {
     series: "PR-ZR (Yellow Zirconia Series)",
+    slug: "pr-zr-yellow-zirconia-series",
     color: "#e8b84b",
+    img: "/images/ceramic-parts-pr-zr-yellow-series.jpg",
     description:
-      "Yellow yttrium-stabilised zirconia — combining the toughness of 3Y-TZP with distinctive colour coding for easy part identification.",
-    products: ["Valve cores", "Capstans", "Wire drawing drums"],
+      "The yellow zirconia series is yellow yttrium stable zirconia part.",
+    products: ["Valve cores", "Capstans", "Bushings", "Wire drawing drums", "etc."],
   },
   {
     series: "Alumina Ceramic Series",
+    slug: "alumina-ceramic-series",
     color: "#f0e8d8",
+    img: "/images/ceramic-parts-alumina-series.jpg",
     description:
-      "Products include 95 alumina and 99 alumina ceramic parts, offering excellent chemical resistance and electrical insulation properties.",
-    products: ["Electronic substrates", "Mechanical seals", "Medical plungers", "Corrosion-resistant piping & valves"],
+      "Alumina ceramic series products include 95 alumina and 99 alumina ceramic parts.",
+    products: ["Electronic substrates", "Mechanical seals", "Medical plungers", "Corrosion-resistant piping & valves", "etc."],
   },
+];
+
+// Extra standalone slide(s) appended to the series slider below (not tied to
+// a single series card — e.g. a group/assortment shot). Add more objects
+// here for further slides.
+const extraCeramicPartsSlides = [
+  {
+    img: "/images/ceramic-parts-assorted.png",
+    label: "Assorted Ceramic Parts",
+  },
+  {
+    img: "/images/ceramic-parts-valve-exploded.jpg",
+    label: "Ball Valve — Exploded View",
+  },
+];
+
+// Additional gallery of individual ceramic part photos — rendered in its own
+// slider below the series slider. Edit labels as needed.
+const moreCeramicPartsSlides = [
+  { img: "/images/ceramic-parts-tube.jpg", label: "Ceramic Tube" },
+  { img: "/images/ceramic-parts-bracket.jpg", label: "Bracket Component" },
+  { img: "/images/ceramic-parts-bushings.jpg", label: "Cylindrical Bushings" },
+  { img: "/images/ceramic-parts-nozzle.jpg", label: "Nozzle / Spray Cone" },
+  { img: "/images/ceramic-parts-housing-set.jpg", label: "Valve Housing & Fittings" },
+  { img: "/images/ceramic-parts-ball-cores-1.jpg", label: "Ball Valve Cores" },
+  { img: "/images/ceramic-parts-ball-cores-2.jpg", label: "Ball Valve Cores — Set" },
+  { img: "/images/ceramic-parts-ball-cores-black.jpg", label: "Ball Valve Cores — Studio" },
+  { img: "/images/ceramic-parts-yellow-sleeve.jpg", label: "Yellow Wear Sleeve" },
+  { img: "/images/ceramic-parts-yellow-rings.jpg", label: "Yellow Ceramic Rings" },
+  { img: "/images/ceramic-parts-turbine.jpg", label: "Turbine Impeller" },
+  { img: "/images/ceramic-parts-steel-sleeves.jpg", label: "Steel-Sleeved Ceramic Liners" },
+  { img: "/images/ceramic-parts-shafts.jpg", label: "Ceramic-Coated Shafts" },
+  { img: "/images/ceramic-parts-crucibles.jpg", label: "Ceramic Crucibles with Lids" },
+  { img: "/images/ceramic-parts-flat-blade.jpg", label: "Flat Ceramic Blade" },
+  { img: "/images/ceramic-parts-curved-brackets.jpg", label: "Curved Ceramic Brackets" },
+];
+
+// Technical parameters — catalogue page 06 comparison table.
+// Shared across A-ZR, Y-ZR and PR-ZR (Alumina has no published values here).
+const technicalParamsRows = [
+  { label: "Zirconium Dioxide (Hf) Content", standard: "GB/T 21114-2019", values: ["89±0.5%", "94.5±0.5%", "94±0.5%"] },
+  { label: "Density (g/cm³)", standard: "GB/T 25995-2010", values: ["≥5.9", "≥6.0", "≥6.0"] },
+  { label: "Water absorption (%)", standard: "GB/T 3299-2011", values: ["<0.05", "<0.05", "<0.05"] },
+  { label: "Thermal conductivity (20°C)", standard: "ASTME 1269 / ASTME 1461", values: ["3±0.5", "3±0.5", "3±0.5"] },
+  { label: "Thermal expansivity (40-400°C)", standard: "GB/T 16535-2008", values: ["11±0.2", "11±0.2", "11±0.2"] },
+  { label: "Vickers Hardness (HV)", standard: "GB/T 16534-2009", values: ["≥1200", "≥1200", "≥1200"] },
+  { label: "Bending Strength (MPa)", standard: "GB/T 6569-2006", values: ["≥950", "≥900", "≥850"] },
+  { label: "Fracture Toughness (MPa.m)", standard: "JISR 1607-2010", values: ["≥11", "≥10", "≥8"] },
+  { label: "Impact toughness (KJ/m²)", standard: "GB/T 14389-1993", values: ["≥20", "≥20", "≥20"] },
+  { label: "Compressive strength (MPa)", standard: "GB/T 8489-2006", values: ["≥2800", "≥2800", "≥2800"] },
+  { label: "Modulus Of Elasticity (GPa)", standard: "GB/T 10700-2006", values: ["≥210", "≥200", "≥200"] },
 ];
 
 const cimAdvantages = [
@@ -99,6 +185,8 @@ const cimAdvantages = [
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function ProductsPage() {
+  const [showCeramicPartsDetails, setShowCeramicPartsDetails] = useState(false);
+
   return (
     <>
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
@@ -118,42 +206,29 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── Category 01 & 02 — Grinding Media ─────────────────────────────── */}
-      <section className="bg-[#f5f5f7] py-20 ">
+      {/* ── Grinding Media ─────────────────────────────────────────────────── */}
+      <section id="grinding-media" className="bg-[#f5f5f7] py-20 scroll-mt-24">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#86868b] mb-2">
-            Category 01 &amp; 02
-          </p>
           <h2 className="text-[32px] font-semibold tracking-tight text-[#1d1d1f] mb-10">
             Ceramic Grinding Media
           </h2>
 
-          <div className="grid lg:grid-cols-2 gap-8 ">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {grindingMedia.map((product) => (
               <div
                 key={product.id}
-                className="rounded-2xl bg-white border border-[#e8e8ed] overflow-hidden flex flex-col card-hover"
+                className="rounded-2xl bg-white border border-[#e8e8ed] overflow-hidden flex flex-col card-hover h-full"
               >
-                {/* Number badge */}
-                <div className="relative aspect-[16/7] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={product.img}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
-                  <span
-                    className="absolute top-4 left-4 text-[48px] font-bold leading-none opacity-90"
-                    style={{ color: product.accent }}
-                  >
-                    {product.id}
-                  </span>
                 </div>
 
-                <div className="p-7 flex flex-col gap-6 flex-1 ">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#86868b] mb-1">
-                      {product.subtitle}
-                    </p>
+                <div className="p-7 flex flex-col gap-6 flex-1">
+                  <div className="h-[110px] sm:h-[95px]">
                     <h3 className="text-[22px] font-semibold text-[#1d1d1f] tracking-tight">
                       {product.name}
                     </h3>
@@ -167,15 +242,17 @@ export default function ProductsPage() {
                     <p className="text-[11px] font-semibold uppercase tracking-widest text-[#86868b] mb-3">
                       Particle Size
                     </p>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 min-h-[100px]">
                       {product.particleSizes.map((ps) => (
                         <div
                           key={ps.label}
-                          className="flex items-center justify-between bg-[#f5f5f7] rounded-lg px-4 py-2.5"
+                          className="flex items-center justify-between gap-3 bg-[#f5f5f7] rounded-lg px-4 py-2.5 overflow-hidden"
                         >
-                          <span className="text-[13px] text-[#1d1d1f] font-medium">{ps.label}</span>
+                          <span className="text-[13px] text-[#1d1d1f] font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                            {ps.label}
+                          </span>
                           <span
-                            className="text-[13px] font-semibold ml-4 shrink-0"
+                            className="text-[13px] font-semibold shrink-0 whitespace-nowrap"
                             style={{ color: "#004428" }}
                           >
                             {ps.range}
@@ -185,23 +262,13 @@ export default function ProductsPage() {
                     </div>
                   </div>
 
-                  {/* Applications */}
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#86868b] mb-3">
-                      Applications
-                    </p>
-                    <ul className="grid grid-cols-1 gap-1.5">
-                      {product.apps.map((a) => (
-                        <li
-                          key={a}
-                          className="text-[13px] text-[#6e6e73] flex items-start gap-2"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#004428] mt-1.5 shrink-0" />
-                          {a}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {/* View details */}
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className="mt-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#1d1d1f] text-white text-[13px] font-medium rounded-full hover:bg-[#8c2442] transition-colors"
+                  >
+                    View Details <RiArrowRightLine size={14} />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -209,12 +276,9 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── Category 03 — Ceramic Parts ────────────────────────────────────── */}
-      <section className="bg-white py-20">
+      {/* ── Ceramic Parts ──────────────────────────────────────────────────── */}
+      <section id="ceramic-parts" className="bg-white py-20 scroll-mt-24">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#86868b] mb-2">
-            Category 03
-          </p>
           <h2 className="text-[32px] font-semibold tracking-tight text-[#1d1d1f] mb-3">
             Ceramic Parts
           </h2>
@@ -223,16 +287,17 @@ export default function ProductsPage() {
             engineered for specific performance requirements.
           </p>
 
-          {/* Section image */}
-          <div className="rounded-2xl overflow-hidden mb-10 aspect-[16/9] card-hover">
-            <img
-              src="/images/ceramic_part.png"
-              alt="NAMTPL Ceramic Parts — full product range"
-              className="w-full h-full object-cover object-top "
-            />
-          </div>
+          {/* Section image slider — one slide per series, plus any extra standalone slides */}
+          <ImageSlider
+            slides={[
+              ...ceramicParts.map((p) => ({ img: p.img, label: p.series })),
+              ...extraCeramicPartsSlides,
+              ...moreCeramicPartsSlides,
+            ]}
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
+          {/* 4 cards — no per-card button anymore */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {ceramicParts.map((p) => (
               <div
                 key={p.series}
@@ -268,15 +333,81 @@ export default function ProductsPage() {
               </div>
             ))}
           </div>
+
+          {/* Single shared "View Details" button below all 4 cards */}
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowCeramicPartsDetails((v) => !v)}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1d1d1f] text-white text-[14px] font-medium rounded-full hover:bg-[#8c2442] transition-colors"
+            >
+              View Details
+              <RiArrowDownSLine
+                size={16}
+                className={`transition-transform ${showCeramicPartsDetails ? "rotate-180" : ""}`}
+              />
+            </button>
+          </div>
+
+          {/* Shared technical parameters comparison table */}
+          {showCeramicPartsDetails && (
+            <div className="mt-8 rounded-2xl border border-[#e8e8ed] bg-[#fbfbfd] p-6 overflow-x-auto">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-[#86868b] mb-5">
+                Technical Parameters Of Zirconia Ceramic Parts
+              </p>
+              <table className="w-full text-left border-collapse min-w-[720px]">
+                <thead>
+                  <tr>
+                    <th className="bg-[#004428] text-white text-[12px] font-semibold px-4 py-3 whitespace-nowrap">
+                      Detection Indicator
+                    </th>
+                    <th className="bg-[#004428] text-white text-[12px] font-semibold px-4 py-3 whitespace-nowrap">
+                      A-ZR (Y8 series)
+                    </th>
+                    <th className="bg-[#004428] text-white text-[12px] font-semibold px-4 py-3 whitespace-nowrap">
+                      Y-ZR (3Y series)
+                    </th>
+                    <th className="bg-[#004428] text-white text-[12px] font-semibold px-4 py-3 whitespace-nowrap">
+                      PR-ZR (Yellow zirconia)
+                    </th>
+                    <th className="bg-[#004428] text-white text-[12px] font-semibold px-4 py-3 whitespace-nowrap">
+                      Detection Standard
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {technicalParamsRows.map((row, i) => (
+                    <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-[#f5f5f7]"}>
+                      <td className="text-[13px] font-medium text-[#1d1d1f] px-4 py-2.5 border-t border-[#e8e8ed] whitespace-nowrap">
+                        {row.label}
+                      </td>
+                      {row.values.map((v, j) => (
+                        <td
+                          key={j}
+                          className="text-[13px] font-semibold px-4 py-2.5 border-t border-[#e8e8ed] whitespace-nowrap"
+                          style={{ color: "#004428" }}
+                        >
+                          {v}
+                        </td>
+                      ))}
+                      <td className="text-[12px] text-[#86868b] px-4 py-2.5 border-t border-[#e8e8ed] whitespace-nowrap">
+                        {row.standard}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="text-[12px] text-[#86868b] mt-4">
+                Alumina Ceramic Series specifications are available on request — please contact our
+                engineering team for detailed data.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ── Category 04 — Injection Molding ────────────────────────────────── */}
-      <section className="bg-[#f5f5f7] py-20">
+      {/* ── Injection Molding ─────────────────────────────────────────────── */}
+      <section id="injection-molding" className="bg-[#f5f5f7] py-20 scroll-mt-24">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#86868b] mb-2">
-            Category 04
-          </p>
           <h2 className="text-[32px] font-semibold tracking-tight text-[#1d1d1f] mb-3">
             Injection Molding Ceramic Parts
           </h2>
@@ -311,7 +442,7 @@ export default function ProductsPage() {
                 </div>
               ))}
 
-              <div className="">
+              <div className="flex flex-wrap gap-3">
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#1d1d1f] text-white rounded-full text-[14px] font-medium hover:bg-[#8c2442] transition-colors card-hover"
@@ -326,20 +457,47 @@ export default function ProductsPage() {
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
       <section className="py-16 bg-white border-t border-[#e8e8ed]">
-        <div className="max-w-[1200px] mx-auto px-6 text-center">
-          <h3 className="text-[28px] font-semibold text-[#1d1d1f] mb-3">
-            Need custom specifications?
-          </h3>
-          <p className="text-[16px] text-[#6e6e73] mb-6">
-            Our engineering team can develop ceramic components tailored to your exact material,
-            geometry and performance requirements.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#1d1d1f] text-white rounded-full text-[14px] font-medium hover:bg-[#8c2442] transition-colors card-hover"
-          >
-            Request a Quote <RiArrowRightLine size={14} />
-          </Link>
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-10 items-center text-center">
+            {/* Left — existing content */}
+            <div>
+              <h3 className="text-[28px] font-semibold text-[#1d1d1f] mb-3">
+                Need custom specifications?
+              </h3>
+              <p className="text-[16px] text-[#6e6e73] mb-6">
+                Our engineering team can develop ceramic components tailored to your exact material,
+                geometry and performance requirements.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#1d1d1f] text-white rounded-full text-[14px] font-medium hover:bg-[#8c2442] transition-colors card-hover"
+              >
+                Request a Quote <RiArrowRightLine size={14} />
+              </Link>
+            </div>
+
+            {/* Middle — vertical divider (hidden on mobile) */}
+            <div className="hidden md:block w-px h-32 bg-[#e8e8ed] mx-auto" />
+
+            {/* Right — View Catalogue */}
+            <div>
+              <h3 className="text-[28px] font-semibold text-[#1d1d1f] mb-3">
+                Explore our full catalogue
+              </h3>
+              <p className="text-[16px] text-[#6e6e73] mb-6">
+                Browse our complete range of grinding media, ceramic parts and CIM components
+                with detailed specifications.
+              </p>
+              <Link
+                href="/catalogue.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#1d1d1f] border border-[#1d1d1f] rounded-full text-[14px] font-medium hover:bg-[#1d1d1f] hover:text-white transition-colors card-hover"
+              >
+                View Catalogue <RiArrowRightLine size={14} />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

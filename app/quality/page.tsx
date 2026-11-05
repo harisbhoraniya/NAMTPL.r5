@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RiArrowRightLine, RiShieldCheckLine, RiTestTubeLine, RiFileCheckLine, RiGlobalLine } from "react-icons/ri";
+import ViewCertificateButton from "@/components/ViewCertificateButton";
 
 const pillars = [
   {
@@ -50,7 +51,7 @@ export default function QualityPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="rounded-2xl overflow-hidden aspect-[21/7] card-hover">
             <img
-              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80&auto=format&fit=crop"
+              src="/images/quality_image.png"
               alt="Quality control"
               className="w-full h-full object-cover"
             />
@@ -96,7 +97,7 @@ export default function QualityPage() {
               <p className="text-[15px] text-[#6e6e73] leading-relaxed mb-6">
                 Our ISO 9001:2015 certification demonstrates our commitment to quality management systems that consistently provide products and services meeting customer and regulatory requirements.
               </p>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {metrics.map((m) => (
                   <div key={m.label} className="p-4 rounded-xl bg-[#f5f5f7] border border-[#e8e8ed] card-hover">
                     <p className="text-[11px] text-[#86868b] uppercase tracking-wider mb-1">{m.label}</p>
@@ -104,6 +105,9 @@ export default function QualityPage() {
                   </div>
                 ))}
               </div>
+
+              {/* View Certificate button — opens PDF in a popup modal */}
+              <ViewCertificateButton />
             </div>
           </div>
         </div>

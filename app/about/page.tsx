@@ -11,12 +11,6 @@ import {
   RiTeamLine,
 } from "react-icons/ri";
 
-const milestones = [
-  { year: "Founded", title: "N Gandhi Enterprises", desc: "Decades of expertise in precision engineering and materials science." },
-  { year: "Growth", title: "Advanced Materials Division", desc: "Established dedicated ceramics R&D and manufacturing capabilities." },
-  { year: "Present", title: "NAMTPL", desc: "Technology-driven company serving global high-performance industries." },
-];
-
 const values = [
   { title: "Precision", desc: "Every component engineered to exacting tolerances.", icon: RiCrosshair2Line },
   { title: "Innovation", desc: "Continuous R&D to push material boundaries.", icon: RiLightbulbLine },
@@ -131,66 +125,60 @@ export default function AboutPage() {
         }
       `}</style>
 
-      {/* Hero */}
+      {/* Hero (text left, image right) */}
       <section className="bg-white pt-16 pb-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="reveal text-[12px] font-semibold uppercase tracking-widest text-[#86868b] mb-4">
-            About Us
-          </p>
-          <h1 className="reveal delay-1 text-[52px] font-semibold tracking-[-0.04em] text-[#1d1d1f] leading-[1.05] mb-6 max-w-2xl">
-            A legacy of material excellence.
-          </h1>
-          <p className="reveal delay-2 text-[19px] text-[#6e6e73] max-w-2xl leading-relaxed">
-            N Gandhi Advance Material Technology Private Limited is a technology-driven company based in Mumbai,
-            focused on developing advanced ceramic materials and components for industrial applications.
-          </p>
-        </div>
-      </section>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <p className="reveal text-[12px] font-semibold uppercase tracking-widest text-[#86868b] mb-4">
+                Advanced Materials. Built for Performance.
+              </p>
+              <h1 className="reveal delay-1 text-[52px] font-semibold tracking-[-0.04em] text-[#1d1d1f] leading-[1.05] mb-6">
+                A legacy of material excellence.
+              </h1>
+              <p className="reveal delay-2 text-[19px] text-[#6e6e73] leading-relaxed">
+                N Gandhi Advance Material Technology Pvt. Ltd. (NAMTPL), part of the N Gandhi Group, specialises in advanced technical ceramics — from high-density zirconia and silicon nitride grinding media to precision-engineered ceramic parts and injection-moulded components.
+              </p>
+              <p className="reveal delay-2 text-[19px] text-[#6e6e73] leading-relaxed mt-4">
+                Our products are trusted across battery materials, electronics, paints & coatings, pharmaceuticals, and mineral processing, delivering superior wear resistance, dimensional accuracy and consistent performance for the most demanding industrial applications.
+              </p>
+            </div>
 
-      {/* Hero Image */}
-      <section className="bg-[#f5f5f7]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="reveal hero-img-wrap aspect-[21/7]">
-            <img
-              src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=1400&q=80&auto=format&fit=crop"
-              alt="Manufacturing"
-            />
+            {/*
+              NOTE: image moved here from the old standalone full-width
+              "Hero Image" section. Swap the src below once photoshoot
+              images are ready; aspect-[4/5] + object-cover keeps it
+              well-cropped in this side-by-side layout.
+            */}
+            <div className="reveal delay-3 hero-img-wrap aspect-[4/5] max-w-[85%] ml-auto">
+              <img
+                src="/images/our_story.jpg"
+                alt="NAMTPL ceramic parts manufacturing"
+                className="object-center"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Story + Milestones */}
+      {/* Story (text only) */}
       <section className="bg-[#f5f5f7] py-20">
-        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
-          <div className="reveal">
-            <h2 className="text-[32px] font-semibold tracking-tight text-[#1d1d1f] mb-5">Our story.</h2>
-            <p className="text-[16px] text-[#6e6e73] leading-relaxed mb-4">
-              Part of N Gandhi Enterprises, we leverage decades of expertise in precision engineering and
-              materials science to deliver advanced ceramic solutions for next-generation industries.
+        <div className="max-w-[760px] mx-auto px-6">
+          <div className="reveal text-center">
+            <p className="text-[12px] font-semibold uppercase tracking-widest text-[#86868b] mb-3">
+              Our Story
             </p>
-            <p className="text-[16px] text-[#6e6e73] leading-relaxed">
-              Based in Mumbai, our team works collaboratively to develop components that solve real-world
-              challenges across paint & coatings, semiconductors, medical, oil & gas, and textile industries.
-            </p>
+            <h2 className="text-[32px] font-semibold tracking-tight text-[#1d1d1f] mb-6">
+              Engineering trust, one component at a time.
+            </h2>
           </div>
-          <div className="space-y-0">
-            {milestones.map((m, i) => (
-              <div
-                key={m.year}
-                className={`reveal milestone-row flex gap-5 delay-${i + 3}`}
-              >
-                <div className="w-[72px] shrink-0 pt-0.5">
-                  <span className="milestone-year text-[11px] font-semibold uppercase tracking-wider text-[#004428] transition-colors duration-200">
-                    {m.year}
-                  </span>
-                </div>
-                <div className={`flex-1 pb-6 ${i < milestones.length - 1 ? "border-b border-[#e8e8ed]" : ""}`}>
-                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-1">{m.title}</h3>
-                  <p className="text-[14px] text-[#6e6e73]">{m.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* NOTE: exact company lineage wording pending confirmation from DNG & Pramod Sir per feedback doc */}
+          <p className="reveal delay-1 text-[17px] text-[#6e6e73] leading-relaxed text-center">
+            Backed by decades of expertise in precision engineering and materials science, NAMTPL — part of the N Gandhi Group — develops advanced ceramic solutions for next-generation industries.
+          </p>
+          <p className="reveal delay-2 text-[17px] text-[#6e6e73] leading-relaxed text-center mt-5">
+            Based in Mumbai, our team works collaboratively to develop components that solve real-world challenges across paint & coatings, semiconductors, medical, oil & gas, and textile industries.
+          </p>
         </div>
       </section>
 

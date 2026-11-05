@@ -75,6 +75,20 @@
   animation: fadeUp 0.7s ease both;
 }
 
+.kenburns {
+  animation: kenburns 3.8s ease-out forwards;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

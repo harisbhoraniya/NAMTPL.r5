@@ -1,36 +1,43 @@
 import Link from "next/link";
 import { RiArrowRightLine } from "react-icons/ri";
 
+// NOTE: per feedback doc, industry descriptions and products lists below
+// are pending review/confirmation with DNG — placeholders kept until finalized.
 const industries = [
   {
-    name: "Paint & Coatings",
+    name: "Paint & Coating",
     img: "/images/paint.png",
     desc: "Ceramic grinding media enables uniform pigment dispersion and improved product quality. Our Zirconia beads are optimized for the specific viscosities and abrasiveness of paint formulations.",
-    products: ["Zirconia Beads (Y-ZR Series)", "Silicon Nitride Beads"],
   },
   {
     name: "Semiconductors & Electronics",
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop",
-    desc: "High-purity ceramics for precision electronic applications. Our components meet the stringent cleanliness and dimensional requirements of semiconductor manufacturing environments.",
-    products: ["Alumina Substrates (99%)", "Zirconia Precision Parts", "CIM Components"],
+    desc: "High-purity ceramics for precision electronic applications. Our components meet stringent cleanliness, thermal stability, and dimensional requirements for semiconductor and electronic manufacturing.",
   },
   {
-    name: "Medical & Healthcare",
+    name: "Medical & Biotech",
     img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&auto=format&fit=crop",
-    desc: "Biocompatible ceramic components for medical devices. Our materials meet stringent biocompatibility standards for implantable and contact applications.",
-    products: ["Biocompatible Zirconia", "Alumina Medical Parts", "CIM Medical Components"],
+    desc: "Biocompatible ceramic components for medical devices and healthcare applications, offering excellent strength, wear resistance, chemical stability, and compatibility with demanding environments.",
   },
   {
     name: "Oil & Gas",
     img: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80&auto=format&fit=crop",
     desc: "Extreme wear and chemical resistance in harsh environments. Our ceramic components maintain dimensional stability under high pressure, temperature, and abrasive media.",
-    products: ["Valve Cores & Seats", "Plungers & Nozzles", "Wear-Resistant Components"],
   },
   {
     name: "Textile",
     img: "/images/textile.jpg",
     desc: "Smooth, wear-resistant ceramic guides and eyelets for yarn and fiber processing. Low friction surfaces reduce fiber breakage and extend equipment life.",
-    products: ["Ceramic Thread Guides", "Wear Parts", "Custom Textile Components"],
+  },
+  {
+    name: "Valves & Fluid Control",
+    img: "/images/valve.jpg",
+    desc: "Advanced technical ceramics provide excellent wear, corrosion, erosion, and chemical resistance for demanding valve and fluid-control applications. Precision ceramic components help maintain reliable sealing and dimensional stability in harsh operating conditions.",
+  },
+  {
+    name: "Dental & Oral Care",
+    img: "/images/dental_oral.jpg",
+    desc: "High-performance zirconia ceramics are used in advanced dental applications due to their excellent strength, biocompatibility, wear resistance, and natural aesthetic appearance. Precision ceramic solutions support reliable and long-lasting dental restorations.",
   },
 ];
 
@@ -54,29 +61,16 @@ export default function IndustriesPage() {
           {industries.map((ind, i) => (
             <div
               key={ind.name}
-              className={`card-hover rounded-2xl bg-white border border-[#e8e8ed] overflow-hidden grid lg:grid-cols-2 ${i % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-                }`}
+              className={`card-hover rounded-2xl bg-white border border-[#e8e8ed] overflow-hidden grid lg:grid-cols-2 ${
+                i % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+              }`}
             >
-              <div className={`aspect-[16/9] lg:aspect-auto overflow-hidden ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+              <div className={`aspect-[16/9] overflow-hidden ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                 <img src={ind.img} alt={ind.name} className="w-full h-full object-cover" />
               </div>
               <div className={`p-8 flex flex-col justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-[#004428] mb-2">
-                  Industry {String(i + 1).padStart(2, "0")}
-                </span>
                 <h2 className="text-[26px] font-semibold text-[#1d1d1f] tracking-tight mb-3">{ind.name}</h2>
-                <p className="text-[15px] text-[#6e6e73] leading-relaxed mb-5">{ind.desc}</p>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-widest text-[#86868b] mb-2">Relevant Products</p>
-                  <ul className="space-y-1">
-                    {ind.products.map((p) => (
-                      <li key={p} className="text-[13px] text-[#6e6e73] flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-[#004428] shrink-0" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-[15px] text-[#6e6e73] leading-relaxed">{ind.desc}</p>
               </div>
             </div>
           ))}

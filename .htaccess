@@ -1,0 +1,18 @@
+# Apache rewrite rules for a static-exported Next.js app
+# If you are using `next export`, this makes clean URLs work and serves index.html for client-side routes.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Disable MultiViews to prevent unexpected route matching
+  Options -MultiViews
+
+  # Serve existing files and directories directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fallback all other requests to index.html
+  RewriteRule ^ /index.html [L]
+</IfModule>
