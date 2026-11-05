@@ -118,7 +118,7 @@ const reasons = [
 
 // Note: images below are intentionally unchanged per client request — only labels/layout updated.
 const industries = [
-  { name: "Paint & Coating", img: "/images/paint.png" },
+  { name: "Paint & Coating", img: "/images/paint_coating_new.jpg" },
   { name: "Semiconductors & Electronics", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop" },
   { name: "Medical & Biotech", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80&auto=format&fit=crop" },
   { name: "Oil & Gas", img: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&q=80&auto=format&fit=crop" },

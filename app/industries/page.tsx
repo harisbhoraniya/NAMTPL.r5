@@ -6,7 +6,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 const industries = [
   {
     name: "Paint & Coating",
-    img: "/images/paint.png",
+    img: "/images/paint_coating_new.jpg",
     desc: "Ceramic grinding media enables uniform pigment dispersion and improved product quality. Our Zirconia beads are optimized for the specific viscosities and abrasiveness of paint formulations.",
   },
   {
