@@ -43,7 +43,7 @@ export default function SustainabilityPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="rounded-2xl overflow-hidden aspect-[21/7] card-hover">
             <img
-              src="/images/sustainability.png"
+              src="/images/sustainability.webp"
               alt="Sustainability"
               className="w-full h-full object-cover "
             />

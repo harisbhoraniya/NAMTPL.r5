@@ -27,7 +27,7 @@ const grindingMedia = [
       "Paints, inks & coatings",
       "Food, medical care & cosmetics",
     ],
-    img: "/images/ceramics.jpg",
+    img: "/images/ceramics.webp",
     accent: "#c8a96e",
   },
   {
@@ -47,7 +47,7 @@ const grindingMedia = [
       "Biomedicine",
       "Semiconductors & electronic materials",
     ],
-    img: "/images/silicon_nitride.png",
+    img: "/images/silicon_nitride.webp",
     accent: "#6e8fa8",
   },
   {
@@ -68,7 +68,7 @@ const grindingMedia = [
       "Cement & building materials",
       "Chemical processing",
     ],
-    img: "/images/alumina_ceramic_ball.jpg",
+    img: "/images/alumina_ceramic_ball.webp",
     accent: "#d9d3c4",
   },
 ];
@@ -78,7 +78,7 @@ const ceramicParts = [
     series: "A-ZR (Y8 Series)",
     slug: "a-zr-y8-series",
     color: "#d4c49a",
-    img: "/images/ceramic-parts-a-zr-y8-series.jpg",
+    img: "/images/ceramic-parts-a-zr-y8-series.webp",
     description:
       "The Y8 series is a composite stabilized zirconia ceramic material independently developed by us. ",
     products: ["Valve cores", "Plungers", "Classification wheels", "Agitation rods", "etc."],
@@ -87,7 +87,7 @@ const ceramicParts = [
     series: "Y-ZR (3Y Series)",
     slug: "y-zr-3y-series",
     color: "#ffffff",
-    img: "/images/ceramic-parts-y-zr-3y-series.jpg",
+    img: "/images/ceramic-parts-y-zr-3y-series.webp",
     description:
       "The 3Y series is yttrium stable zirconia part.",
     products: ["Zirconia ceramic accessories for bead mills", "Ball milling jars", "Turbines", "Nozzles", "etc."],
@@ -96,7 +96,7 @@ const ceramicParts = [
     series: "PR-ZR (Yellow Zirconia Series)",
     slug: "pr-zr-yellow-zirconia-series",
     color: "#e8b84b",
-    img: "/images/ceramic-parts-pr-zr-yellow-series.jpg",
+    img: "/images/ceramic-parts-pr-zr-yellow-series.webp",
     description:
       "The yellow zirconia series is yellow yttrium stable zirconia part.",
     products: ["Valve cores", "Capstans", "Bushings", "Wire drawing drums", "etc."],
@@ -105,7 +105,7 @@ const ceramicParts = [
     series: "Alumina Ceramic Series",
     slug: "alumina-ceramic-series",
     color: "#f0e8d8",
-    img: "/images/ceramic-parts-alumina-series.jpg",
+    img: "/images/ceramic-parts-alumina-series.webp",
     description:
       "Alumina ceramic series products include 95 alumina and 99 alumina ceramic parts.",
     products: ["Electronic substrates", "Mechanical seals", "Medical plungers", "Corrosion-resistant piping & valves", "etc."],
@@ -117,11 +117,11 @@ const ceramicParts = [
 // here for further slides.
 const extraCeramicPartsSlides = [
   {
-    img: "/images/ceramic-parts-assorted.png",
+    img: "/images/ceramic-parts-assorted.webp",
     label: "Assorted Ceramic Parts",
   },
   {
-    img: "/images/ceramic-parts-valve-exploded.jpg",
+    img: "/images/ceramic-parts-valve-exploded.webp",
     label: "Ball Valve — Exploded View",
   },
 ];
@@ -129,22 +129,22 @@ const extraCeramicPartsSlides = [
 // Additional gallery of individual ceramic part photos — rendered in its own
 // slider below the series slider. Edit labels as needed.
 const moreCeramicPartsSlides = [
-  { img: "/images/ceramic-parts-tube.jpg", label: "Ceramic Tube" },
-  { img: "/images/ceramic-parts-bracket.jpg", label: "Bracket Component" },
-  { img: "/images/ceramic-parts-bushings.jpg", label: "Cylindrical Bushings" },
-  { img: "/images/ceramic-parts-nozzle.jpg", label: "Nozzle / Spray Cone" },
-  { img: "/images/ceramic-parts-housing-set.jpg", label: "Valve Housing & Fittings" },
-  { img: "/images/ceramic-parts-ball-cores-1.jpg", label: "Ball Valve Cores" },
-  { img: "/images/ceramic-parts-ball-cores-2.jpg", label: "Ball Valve Cores — Set" },
-  { img: "/images/ceramic-parts-ball-cores-black.jpg", label: "Ball Valve Cores — Studio" },
-  { img: "/images/ceramic-parts-yellow-sleeve.jpg", label: "Yellow Wear Sleeve" },
-  { img: "/images/ceramic-parts-yellow-rings.jpg", label: "Yellow Ceramic Rings" },
-  { img: "/images/ceramic-parts-turbine.jpg", label: "Turbine Impeller" },
-  { img: "/images/ceramic-parts-steel-sleeves.jpg", label: "Steel-Sleeved Ceramic Liners" },
-  { img: "/images/ceramic-parts-shafts.jpg", label: "Ceramic-Coated Shafts" },
-  { img: "/images/ceramic-parts-crucibles.jpg", label: "Ceramic Crucibles with Lids" },
-  { img: "/images/ceramic-parts-flat-blade.jpg", label: "Flat Ceramic Blade" },
-  { img: "/images/ceramic-parts-curved-brackets.jpg", label: "Curved Ceramic Brackets" },
+  { img: "/images/ceramic-parts-tube.webp", label: "Ceramic Tube" },
+  { img: "/images/ceramic-parts-bracket.webp", label: "Bracket Component" },
+  { img: "/images/ceramic-parts-bushings.webp", label: "Cylindrical Bushings" },
+  { img: "/images/ceramic-parts-nozzle.webp", label: "Nozzle / Spray Cone" },
+  { img: "/images/ceramic-parts-housing-set.webp", label: "Valve Housing & Fittings" },
+  { img: "/images/ceramic-parts-ball-cores-1.webp", label: "Ball Valve Cores" },
+  { img: "/images/ceramic-parts-ball-cores-2.webp", label: "Ball Valve Cores — Set" },
+  { img: "/images/ceramic-parts-ball-cores-black.webp", label: "Ball Valve Cores — Studio" },
+  { img: "/images/ceramic-parts-yellow-sleeve.webp", label: "Yellow Wear Sleeve" },
+  { img: "/images/ceramic-parts-yellow-rings.webp", label: "Yellow Ceramic Rings" },
+  { img: "/images/ceramic-parts-turbine.webp", label: "Turbine Impeller" },
+  { img: "/images/ceramic-parts-steel-sleeves.webp", label: "Steel-Sleeved Ceramic Liners" },
+  { img: "/images/ceramic-parts-shafts.webp", label: "Ceramic-Coated Shafts" },
+  { img: "/images/ceramic-parts-crucibles.webp", label: "Ceramic Crucibles with Lids" },
+  { img: "/images/ceramic-parts-flat-blade.webp", label: "Flat Ceramic Blade" },
+  { img: "/images/ceramic-parts-curved-brackets.webp", label: "Curved Ceramic Brackets" },
 ];
 
 // Technical parameters — catalogue page 06 comparison table.
@@ -422,7 +422,7 @@ export default function ProductsPage() {
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="rounded-2xl overflow-hidden aspect-[4/3] card-hover">
               <img
-                src="/images/injection_molding.png"
+                src="/images/injection_molding.webp"
                 alt="CIM ceramic parts"
                 className="w-full h-full object-cover"
               />

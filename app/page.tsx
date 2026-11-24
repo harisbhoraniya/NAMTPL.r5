@@ -6,7 +6,7 @@ import { RiArrowRightLine, RiCheckLine, RiShieldCheckLine, RiFlaskLine, RiGlobal
 
 const heroSlides = [
   {
-    img: "/images/ceramics.jpg",
+    img: "/images/ceramics.webp",
     alt: "Advanced ceramics",
     badge: "Ceramic Grinding Media",
     title: ["Precision-milled", "zirconia beads."],
@@ -17,7 +17,7 @@ const heroSlides = [
     zoom: true,
   },
   {
-    img: "/images/silicon_nitride.png",
+    img: "/images/silicon_nitride.webp",
     alt: "Silicon nitride grinding media",
     badge: "Silicon Nitride Beads",
     title: ["Built for extreme", "wear resistance."],
@@ -28,7 +28,7 @@ const heroSlides = [
     zoom: true,
   },
   {
-    img: "/images/alumina_ceramic_ball.jpg",
+    img: "/images/alumina_ceramic_ball.webp",
     alt: "Alumina ceramic balls",
     badge: "Alumina Ceramic Balls",
     title: ["High-hardness", "alumina balls."],
@@ -42,7 +42,7 @@ const heroSlides = [
     // fit: "contain" — the whole image is always shown, no cropping on any
     // side. object-contain never crops; any leftover space is filled by the
     // section's dark background (bg-[#0c0c0c]) instead of cutting content.
-    img: "/images/ceramic_part_wide.png",
+    img: "/images/ceramic_part_wide.webp",
     alt: "Precision ceramic parts",
     badge: "Ceramic Parts",
     title: ["Ceramics that", "outperform."],
@@ -56,7 +56,7 @@ const heroSlides = [
     // fit: "contain" — same as above: full image always visible, top to
     // bottom, no cropping. zoom stays off too, since the kenburns scale
     // animation would push edges out of frame again.
-    img: "/images/injection_molding_wide.png",
+    img: "/images/injection_molding_wide.webp",
     alt: "Injection moulded ceramic components",
     badge: "CIM Components",
     title: ["Complex geometries.", "Mass produced."],
@@ -76,35 +76,35 @@ const offerings = [
     title: "Ceramic Grinding Media",
     subtitle: "Zirconia Beads",
     desc: "High-density, ultra-fine zirconia beads for precision milling and dispersion.",
-    img: "/images/ceramics.jpg",
+    img: "/images/ceramics.webp",
     href: "/products/zirconia-beads",
   },
   {
     title: "Ceramic Grinding Media",
     subtitle: "Silicon Nitride Beads",
     desc: "Low-density, high-efficiency grinding media for demanding conditions.",
-    img: "/images/silicon_nitride.png",
+    img: "/images/silicon_nitride.webp",
     href: "/products/silicon-nitride-beads",
   },
   {
     title: "Ceramic Grinding Media",
     subtitle: "Alumina Ceramic Beads",
     desc: "High-hardness 92% alumina beads with excellent wear resistance and low breakage rate.",
-    img: "/images/alumina_ceramic_ball.jpg",
+    img: "/images/alumina_ceramic_ball.webp",
     href: "/products/alumina-ceramic-beads",
   },
   {
     title: "Zirconia & Alumina Ceramic Parts",
     subtitle: "Ceramic Parts",
     desc: "Precision-engineered components across Zirconia and Alumina series.",
-    img: "/images/ceramic_part.png",
+    img: "/images/ceramic_part.webp",
     href: "/products#ceramic-parts",
   },
   {
     title: "Injection Molding Ceramic Parts",
     subtitle: "CIM Components",
     desc: "Complex, mass-producible ceramic geometries via advanced CIM technology.",
-    img: "/images/injection_molding.png",
+    img: "/images/injection_molding.webp",
     href: "/products#injection-molding",
   },
 ];
@@ -118,13 +118,13 @@ const reasons = [
 
 // Note: images below are intentionally unchanged per client request — only labels/layout updated.
 const industries = [
-  { name: "Paint & Coating", img: "/images/paint_coating_new.jpg" },
+  { name: "Paint & Coating", img: "/images/paint_coating_new.webp" },
   { name: "Semiconductors & Electronics", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop" },
   { name: "Medical & Biotech", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80&auto=format&fit=crop" },
   { name: "Oil & Gas", img: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&q=80&auto=format&fit=crop" },
-  { name: "Textile", img: "/images/textile.jpg" },
-  { name: "Valve", img: "/images/valve.jpg" },
-  { name: "Dental", img: "/images/dental_oral.jpg" },
+  { name: "Textile", img: "/images/textile.webp" },
+  { name: "Valve", img: "/images/valve.webp" },
+  { name: "Dental", img: "/images/dental_oral.webp" },
 ];
 
 function useAutoSlide(length: number, interval = 8000) {
@@ -232,7 +232,7 @@ export default function HomePage() {
       <section className="relative py-20 bg-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-[0.05]"
-          style={{ backgroundImage: "url('/images/ceramics.jpg')" }}
+          style={{ backgroundImage: "url('/images/ceramics.webp')" }}
         />
         <div className="relative max-w-[1200px] mx-auto px-6">
           <p className="text-[12px] font-semibold uppercase tracking-widest text-[#86868b] mb-3">Products</p>
@@ -313,7 +313,7 @@ export default function HomePage() {
               </ul>
             </div>
             {/*
-              NOTE: /images/why_us.jpg is an infographic with text labels
+              NOTE: /images/why_us.webp is an infographic with text labels
               anchored near every edge/corner ("Backed by trust", "Healthcare",
               "ISO 9001:2015 Certified", etc). object-cover would risk cropping
               those labels on any aspect-ratio mismatch, so this uses
@@ -322,7 +322,7 @@ export default function HomePage() {
             */}
             <div className="rounded-2xl overflow-hidden aspect-[4/3] card-hover bg-[#0b1220]">
               <img
-                src="/images/why_us.jpg"
+                src="/images/why_us.webp"
                 alt="Precision ceramic manufacturing"
                 className="w-full h-full object-contain"
               />

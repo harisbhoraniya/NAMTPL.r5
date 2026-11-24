@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Logo + Brand */}
           <div>
             <div className="mb-4">
-              <img src="/images/logo.png" alt="NAMTPL Logo" className="h-16 w-auto object-contain" />
+              <img src="/images/logo.webp" alt="NAMTPL Logo" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-[14px] text-[#6e6e73] leading-relaxed max-w-xs">
               Advanced ceramic materials and components for high-performance

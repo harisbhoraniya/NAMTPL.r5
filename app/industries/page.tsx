@@ -6,7 +6,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 const industries = [
   {
     name: "Paint & Coating",
-    img: "/images/paint_coating_new.jpg",
+    img: "/images/paint_coating_new.webp",
     desc: "Ceramic grinding media enables uniform pigment dispersion and improved product quality. Our Zirconia beads are optimized for the specific viscosities and abrasiveness of paint formulations.",
   },
   {
@@ -26,17 +26,17 @@ const industries = [
   },
   {
     name: "Textile",
-    img: "/images/textile.jpg",
+    img: "/images/textile.webp",
     desc: "Smooth, wear-resistant ceramic guides and eyelets for yarn and fiber processing. Low friction surfaces reduce fiber breakage and extend equipment life.",
   },
   {
     name: "Valves & Fluid Control",
-    img: "/images/valve.jpg",
+    img: "/images/valve.webp",
     desc: "Advanced technical ceramics provide excellent wear, corrosion, erosion, and chemical resistance for demanding valve and fluid-control applications. Precision ceramic components help maintain reliable sealing and dimensional stability in harsh operating conditions.",
   },
   {
     name: "Dental & Oral Care",
-    img: "/images/dental_oral.jpg",
+    img: "/images/dental_oral.webp",
     desc: "High-performance zirconia ceramics are used in advanced dental applications due to their excellent strength, biocompatibility, wear resistance, and natural aesthetic appearance. Precision ceramic solutions support reliable and long-lasting dental restorations.",
   },
 ];

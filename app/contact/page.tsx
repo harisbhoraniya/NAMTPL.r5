@@ -25,7 +25,8 @@ export default function ContactPage() {
     email: "",
     phone: "",
     message: "",
-    product: "",
+    category: "",
+    subcategory: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
@@ -34,7 +35,16 @@ export default function ContactPage() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    if (name === "category") {
+      setForm((prev) => ({
+        ...prev,
+        category: value,
+        subcategory: value === "Ceramic Grinding Media" ? prev.subcategory : "",
+      }));
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
     if (errorMessage) setErrorMessage(null);
   };
 
@@ -67,7 +77,10 @@ export default function ContactPage() {
           email: form.email,
           phone: form.phone || "Not provided",
           company: form.company || "Not provided",
-          product: form.product || "General Inquiry",
+          product:
+            form.category === "Ceramic Grinding Media" && form.subcategory
+              ? `${form.category} (${form.subcategory})`
+              : form.category || "General Inquiry",
           message: form.message,
         }),
       });
@@ -82,7 +95,8 @@ export default function ContactPage() {
           email: "",
           phone: "",
           message: "",
-          product: "",
+          category: "",
+          subcategory: "",
         });
       } else {
         setErrorMessage(
@@ -106,12 +120,9 @@ export default function ContactPage() {
       <section className="bg-white pt-16 pb-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <p className="text-[12px] font-semibold uppercase tracking-widest text-[#86868b] mb-4">Contact</p>
-          <h1 className="text-[52px] font-semibold tracking-[-0.04em] text-[#1d1d1f] leading-[1.05] mb-6 max-w-2xl">
+          <h1 className="text-[52px] font-semibold tracking-[-0.04em] text-[#1d1d1f] leading-[1.05] max-w-2xl">
             Let&apos;s work together.
           </h1>
-          <p className="text-[19px] text-[#6e6e73] max-w-xl leading-relaxed">
-            Reach out for product inquiries, custom engineering requirements, or the Zirconia buyback program.
-          </p>
         </div>
       </section>
 
@@ -120,7 +131,7 @@ export default function ContactPage() {
           {/* Contact Info */}
           <div className="lg:col-span-2">
             <h2 className="text-[22px] font-semibold text-[#1d1d1f] mb-6">Get in touch.</h2>
-            <ul className="space-y-5 mb-10">
+            <ul className="space-y-5">
               {contactInfo.map((c) => (
                 <li key={c.label} className="flex items-start gap-3">
                   <span className="text-[#004428] mt-0.5 shrink-0">{c.icon}</span>
@@ -137,13 +148,6 @@ export default function ContactPage() {
                 </li>
               ))}
             </ul>
-
-            <div className="p-5 rounded-2xl bg-[#004428]/5 border border-[#004428]/15">
-              <p className="text-[13px] font-semibold text-[#004428] mb-1">Zirconia Bead Buyback</p>
-              <p className="text-[13px] text-[#6e6e73] leading-relaxed">
-                We purchase used Zirconia beads. Contact us to discuss quantities and logistics.
-              </p>
-            </div>
           </div>
 
           {/* Form */}
@@ -236,25 +240,44 @@ export default function ContactPage() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-[12px] font-medium text-[#86868b] uppercase tracking-wider mb-1.5">
-                      Product Interest
-                    </label>
-                    <select
-                      name="product"
-                      value={form.product}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 text-[14px] bg-[#f5f5f7] rounded-xl border border-[#e8e8ed] focus:outline-none focus:border-[#004428] text-[#1d1d1f] transition-colors"
-                    >
-                      <option value="">Select a product category</option>
-                      <option>Zirconia Beads</option>
-                      <option>Silicon Nitride Beads</option>
-                      <option>Zirconia Ceramic Parts</option>
-                      <option>Alumina Ceramic Parts</option>
-                      <option>CIM Components</option>
-                      <option>Zirconia Buyback Program</option>
-                      <option>Custom Engineering</option>
-                    </select>
+                  <div className={`grid gap-4 ${form.category === "Ceramic Grinding Media" ? "sm:grid-cols-2" : "grid-cols-1"}`}>
+                    <div>
+                      <label className="block text-[12px] font-medium text-[#86868b] uppercase tracking-wider mb-1.5">
+                        Product Category *
+                      </label>
+                      <select
+                        name="category"
+                        value={form.category}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-2.5 text-[14px] bg-[#f5f5f7] rounded-xl border border-[#e8e8ed] focus:outline-none focus:border-[#004428] text-[#1d1d1f] transition-colors"
+                      >
+                        <option value="">Select a product category</option>
+                        <option value="Ceramic Grinding Media">Ceramic Grinding Media</option>
+                        <option value="Ceramic Parts">Ceramic Parts</option>
+                        <option value="Injection Molding Ceramic Parts">Injection Molding Ceramic Parts</option>
+                      </select>
+                    </div>
+
+                    {form.category === "Ceramic Grinding Media" && (
+                      <div>
+                        <label className="block text-[12px] font-medium text-[#86868b] uppercase tracking-wider mb-1.5">
+                          Subcategory *
+                        </label>
+                        <select
+                          name="subcategory"
+                          value={form.subcategory}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-2.5 text-[14px] bg-[#f5f5f7] rounded-xl border border-[#e8e8ed] focus:outline-none focus:border-[#004428] text-[#1d1d1f] transition-colors"
+                        >
+                          <option value="">Select a subcategory</option>
+                          <option value="Zirconia Beads">Zirconia Beads</option>
+                          <option value="Silicon Nitride Beads">Silicon Nitride Beads</option>
+                          <option value="Alumina Ceramic Beads">Alumina Ceramic Beads</option>
+                        </select>
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label className="block text-[12px] font-medium text-[#86868b] uppercase tracking-wider mb-1.5">

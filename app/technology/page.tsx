@@ -45,7 +45,7 @@ export default function TechnologyPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="rounded-2xl overflow-hidden card-hover">
             <img
-              src="/images/CIM_process.png"
+              src="/images/CIM_process.webp"
               alt="CIM Process"
               className="w-full h-full object-cover"
             />

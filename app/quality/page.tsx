@@ -25,13 +25,6 @@ const pillars = [
   },
 ];
 
-const metrics = [
-  { label: "Dimensional Tolerance", value: "±0.5%" },
-  { label: "Surface Roughness", value: "Ra < 0.1 μm" },
-  { label: "Density Verification", value: "100%" },
-  { label: "Hardness Testing", value: "Per Batch" },
-];
-
 export default function QualityPage() {
   return (
     <>
@@ -47,28 +40,32 @@ export default function QualityPage() {
         </div>
       </section>
 
-      <section className="bg-[#f5f5f7]">
+      <section className="bg-[#f5f5f7] py-20 border-y border-[#e8e8ed]">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="rounded-2xl overflow-hidden aspect-[21/7] card-hover">
-            <img
-              src="/images/quality_image.png"
-              alt="Quality control"
-              className="w-full h-full object-cover"
-            />
+          <div className="max-w-2xl mb-12">
+            <p className="text-[12px] font-semibold uppercase tracking-widest text-[#004428] mb-3">Our Pillars</p>
+            <h2 className="text-[36px] font-semibold tracking-tight text-[#1d1d1f] mb-4">Quality pillars.</h2>
+            <p className="text-[16px] text-[#6e6e73] leading-relaxed">
+              Four foundational standards that guide our manufacturing, inspection, and delivery processes.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f5f5f7] py-20">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-[12px] font-semibold uppercase tracking-widest text-[#86868b] mb-3">Our Pillars</p>
-          <h2 className="text-[32px] font-semibold tracking-tight text-[#1d1d1f] mb-10">Quality pillars.</h2>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-2 gap-6">
             {pillars.map((p) => (
-              <div key={p.title} className="p-6 rounded-2xl bg-white border border-[#e8e8ed] card-hover">
-                <div className="text-[#004428] mb-4">{p.icon}</div>
-                <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2">{p.title}</h3>
-                <p className="text-[14px] text-[#6e6e73] leading-relaxed">{p.desc}</p>
+              <div
+                key={p.title}
+                className="group p-8 rounded-2xl bg-white border border-[#e8e8ed] hover:border-[#004428]/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-[#004428]/8 text-[#004428] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#004428] group-hover:text-white">
+                    {p.icon}
+                  </div>
+                  <h3 className="text-[18px] font-semibold text-[#1d1d1f] mb-2.5 tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-[14px] text-[#6e6e73] leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -79,11 +76,11 @@ export default function QualityPage() {
       <section className="bg-white py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] card-hover">
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] card-hover bg-[#f5f5f7] border border-[#e8e8ed] flex items-center justify-center p-8">
               <img
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80&auto=format&fit=crop"
-                alt="Certification"
-                className="w-full h-full object-cover"
+                src="/images/iso-9001-badge.webp"
+                alt="ISO 9001:2015 Certification"
+                className="w-full h-full object-contain max-h-[320px]"
               />
             </div>
             <div>
@@ -97,14 +94,6 @@ export default function QualityPage() {
               <p className="text-[15px] text-[#6e6e73] leading-relaxed mb-6">
                 Our ISO 9001:2015 certification demonstrates our commitment to quality management systems that consistently provide products and services meeting customer and regulatory requirements.
               </p>
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {metrics.map((m) => (
-                  <div key={m.label} className="p-4 rounded-xl bg-[#f5f5f7] border border-[#e8e8ed] card-hover">
-                    <p className="text-[11px] text-[#86868b] uppercase tracking-wider mb-1">{m.label}</p>
-                    <p className="text-[14px] font-semibold text-[#1d1d1f]">{m.value}</p>
-                  </div>
-                ))}
-              </div>
 
               {/* View Certificate button — opens PDF in a popup modal */}
               <ViewCertificateButton />

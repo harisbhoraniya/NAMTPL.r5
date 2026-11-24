@@ -152,7 +152,7 @@ export default function AboutPage() {
             */}
             <div className="reveal delay-3 hero-img-wrap aspect-[4/5] max-w-[85%] ml-auto">
               <img
-                src="/images/our_story.jpg"
+                src="/images/our_story.webp"
                 alt="NAMTPL ceramic parts manufacturing"
                 className="object-center"
               />

@@ -35,7 +35,7 @@ export default function Navbar() {
       <nav className="max-w-[1400px] mx-auto px-6 h-[76px] flex items-center justify-between gap-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <img src="/images/logo.png" alt="NAEPL Logo" className="h-14 w-auto object-contain" />
+          <img src="/images/logo.webp" alt="NAEPL Logo" className="h-14 w-auto object-contain" />
 
         </Link>
 
@@ -75,7 +75,7 @@ export default function Navbar() {
             className="hidden lg:inline-flex items-center px-5 py-2.5 rounded-full bg-[#f5f5f7] border-2 border-[#e67e22] hover:bg-[#e67e22] transition-all duration-200 shrink-0"
           >
             <img
-              src="/images/ngandhi-group-logo.png"
+              src="/images/ngandhi-group-logo.webp"
               alt="N Gandhi Group"
               className="h-5 w-auto object-contain"
             />
@@ -119,7 +119,7 @@ export default function Navbar() {
             className="mt-3 flex items-center justify-center gap-2 py-2.5 text-[15px] font-medium rounded-full border border-[#e8e8ed] text-[#1d1d1f]"
           >
             <img
-              src="/images/ngandhi-group-logo.png"
+              src="/images/ngandhi-group-logo.webp"
               alt="N Gandhi Group"
               className="h-5 w-5 object-contain"
             />
