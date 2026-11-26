@@ -65,7 +65,7 @@ export const products: ProductDetail[] = [
     categoryHref: "/products#grinding-media",
     name: "Zirconia Beads",
     subtitle: "ZR95 Series",
-    heroImg: "/images/ceramics.jpg",
+    heroImg: "/images/ceramics.webp",
     description:
       "Ultra-fine crystallite structure, high density, uniform particle size and smooth surface. Non-standard grinding media can be customised according to customer requirements with good wear resistance and high strength, effectively reducing grinding process cost.",
     particleSizes: [
@@ -125,7 +125,7 @@ export const products: ProductDetail[] = [
     categoryHref: "/products#grinding-media",
     name: "Silicon Nitride Beads",
     subtitle: "Ultra-Wear-Resistant Series",
-    heroImg: "/images/silicon_nitride.png",
+    heroImg: "/images/silicon_nitride.webp",
     description:
       "High-end grinding media with low density, low wear and high efficiency. Applicable across a wider range of grinding conditions with excellent cost performance — a premium alternative to zirconia beads.",
     particleSizes: [{ label: "Ultra-wear-resistant Silicon Nitride Beads", range: "0.10mm- 3.00mm" }],
@@ -173,7 +173,7 @@ export const products: ProductDetail[] = [
     subtitle: "92% Alumina Series",
     description:
       "Manufactured from premium 92% alumina raw materials with high hardness and excellent wear resistance. A cost-effective grinding media for general industrial applications, offering strong resistance to corrosion, acids and alkalis, high impact strength and a low breakage rate. Suitable for both wet and dry grinding processes.",
-    heroImg: "/images/alumina_ceramic_ball.jpg",
+    heroImg: "/images/alumina_ceramic_ball.webp",
     color: "#F0F0EE",
 
     particleSizes: [

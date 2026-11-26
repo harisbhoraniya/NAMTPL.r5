@@ -64,8 +64,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <RiGlobalLine className="text-[#004428] shrink-0" size={15} />
-                <a href="https://www.ngandhi.com" target="_blank" rel="noopener noreferrer" className="text-[14px] text-[#6e6e73] hover:text-[#8c2442] transition-colors">
-                  www.ngandhi.com
+                <a href="https://www.namtpl.in" target="_blank" rel="noopener noreferrer" className="text-[14px] text-[#6e6e73] hover:text-[#8c2442] transition-colors">
+                  www.namtpl.in
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

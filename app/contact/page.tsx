@@ -12,10 +12,15 @@ import {
 } from "react-icons/ri";
 
 const contactInfo = [
-  { icon: <RiMapPinLine size={18} />, label: "Address", value: "Mumbai, Maharashtra, India" },
-  { icon: <RiPhoneLine size={18} />, label: "Phone", value: "+91-22-68380200 (100 Lines)", href: "tel:+912268380200" },
+  {
+    icon: <RiMapPinLine size={18} />,
+    label: "Address",
+    value: "104, 1st Floor, C Wing, Marathon Futurex, N M Joshi Marg, Lower Parel (E), Mumbai - 400013, Maharashtra, India.",
+    href: "https://maps.app.goo.gl/Gqyn1kDVDPgzPoP59",
+  },
+  { icon: <RiPhoneLine size={18} />, label: "Phone", value: "+91 22-68380200 (100 lines)", href: "tel:+91 22-68380200" },
   { icon: <RiMailLine size={18} />, label: "Email", value: "enquirymatl@ngandhi.com", href: "mailto:enquirymatl@ngandhi.com" },
-  { icon: <RiGlobalLine size={18} />, label: "Website", value: "www.ngandhi.com", href: "https://www.ngandhi.com" },
+  { icon: <RiGlobalLine size={18} />, label: "Website", value: "www.namtpl.in", href: "https://www.namtpl.in" },
 ];
 
 export default function ContactPage() {
@@ -224,6 +229,7 @@ export default function ContactPage() {
                         type="email"
                         required
                         placeholder="your@email.com"
+                        suppressHydrationWarning
                         className="w-full px-4 py-2.5 text-[14px] bg-[#f5f5f7] rounded-xl border border-[#e8e8ed] focus:outline-none focus:border-[#004428] text-[#1d1d1f] placeholder-[#86868b] transition-colors"
                       />
                     </div>
